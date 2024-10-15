@@ -13,7 +13,7 @@ Console.WriteLine("2- " +replaced.Replace("gato","cao"));
 string programacao = "programacao";
 Console.WriteLine(programacao.ToUpper());
 
-//Trim (fácil): Remova os espaços extras ao redor da string " Olá ".
+//Trim (fácil): Remova os espaços extras ao redor da ‘string’" Olá ".
 string trimteste = " Olá ";
 Console.WriteLine(trimteste.Trim());
 
@@ -27,7 +27,7 @@ string foto = "foto.jpg";
 
 Console.WriteLine(foto.EndsWith(".jpg"));
 
-//Split (fácil): Divida a frase "C#, Java, Python" em uma lista de linguagens.
+//Split (fácil): Divida a frase "C#, Java, Python" numa lista de linguagens.
 
 string linguagens = "C#, Java, Python";
 
@@ -261,13 +261,72 @@ Console.WriteLine("Olá mundo!");
 
 
 //LINQ Select (intermediário): Multiplique cada número de uma lista por 2 usando LINQ.
+
+List<int> numerosLinq = new List<int>([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
+
+Console.WriteLine(string.Join(",",numerosLinq.Select(i => i * 2)));
 //Dica: Use uma expressão lambda com Select.
+
 //LINQ Where (intermediário): Filtre os números pares de uma lista.
+
+List<int> numerosWhere = new List<int>([1,2,3,4,4,4,5,6,7,8,9,10,11,12,13,14,15]);
+
+Console.WriteLine(string.Join(",",numerosWhere.Where(i => i % 2 == 0)));
 //Dica: Combine Where e % para verificar a paridade.
+
 //GroupBy (intermediário): Agrupe uma lista de pessoas por sua cidade.
+
+
+List<string> pessoas = new List<string>
+{
+    "João", "São Paulo",
+    "Maria", "Rio de Janeiro",
+    "Pedro", "São Paulo",
+    "Ana", "Rio de Janeiro",
+    "Lucas", "Curitiba"
+};
+
+var pares = new List<(string Nome, string Cidade)>();
+
+for (int i = 0; i < pessoas.Count; i += 2)
+{
+    string nome = pessoas[i];
+    string cidade = pessoas[i + 1];
+    pares.Add((nome, cidade));
+}
+
+// Agrupando as pessoas pela cidade
+var pessoasPorCidade = pares.GroupBy(p => p.Cidade);
+
+foreach (var grupo in pessoasPorCidade)
+{
+    Console.WriteLine($"Cidade: {grupo.Key}");
+    foreach (var pessoa in grupo)
+    {
+        Console.WriteLine($"- {pessoa.Nome}");
+    }
+}
 //OrderBy (intermediário): Ordene uma lista de nomes em ordem alfabética.
+
+List<string> nomezitos = new List<string>(["joao","ana","pedro","jose","thiago","maria","naldo"]);
+
+nomezitos.OrderBy(n => n).ToList();
+
+foreach (var nome in nomezitos)
+{
+    Console.WriteLine(nome);
+}
+
 //Take (intermediário): Pegue os primeiros 5 números de uma lista.
+
+List<int> primeirosNumeros = new List<int>([1,2,3,4,5,6,7,8,9,5,10,12,111]);
+
+Console.WriteLine(string.Join(",",primeirosNumeros.Take(5)));
+
 //Skip (intermediário): Pule os primeiros 3 números de uma lista.
+
+
+
 //Any (intermediário): Verifique se há algum número maior que 10 em uma lista.
 //All (intermediário): Verifique se todos os números de uma lista são positivos.
 //Aggregate (intermediário): Use Aggregate para calcular o produto de uma lista de inteiros.
