@@ -341,10 +341,16 @@ Console.WriteLine(primeirosNumeros.Aggregate(1,(acumulador,n) => acumulador * n)
 
 //Sum (intermediário): Calcule a soma de uma lista de números usando LINQ.
 
-
+Console.WriteLine(primeirosNumeros.Sum());
 
 //FirstOrDefault (intermediário): Retorne o primeiro número maior que 5 ou o padrão, se não houver.
+
+Console.WriteLine(primeirosNumeros.FirstOrDefault(i => i > 5));
+
 //LastOrDefault (intermediário): Retorne o último número em uma lista ou o padrão, se a lista estiver vazia.
+
+
+
 //LINQ Join (avançado): Faça um join de duas listas baseadas em um campo comum.
 //SelectMany (avançado): Use SelectMany para achatar uma lista de listas.
 //DistinctBy (avançado): Encontre valores únicos com base em uma propriedade de objeto.
