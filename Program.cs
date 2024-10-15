@@ -349,11 +349,31 @@ Console.WriteLine(primeirosNumeros.FirstOrDefault(i => i > 5));
 
 //LastOrDefault (intermediário): Retorne o último número em uma lista ou o padrão, se a lista estiver vazia.
 
-
+Console.WriteLine(primeirosNumeros.LastOrDefault());
 
 //LINQ Join (avançado): Faça um join de duas listas baseadas em um campo comum.
+
+List<int> lista1 = new List<int>([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+
+List<int> lista2 = new List<int>([1, 2, 3, 4, 5, 12, 13, 14, 15, 16]);
+
+var listaJoined = lista1.Join(
+    lista2,
+    num1 => num1,
+    num2 => num2,
+    (num1, num2) => num1
+);
+
 //SelectMany (avançado): Use SelectMany para achatar uma lista de listas.
+
+var listaDeListas = new List<List<int>>([[1,2,3,4,5,6,7,8,9,10]]);
+
+listaDeListas.SelectMany(lista => lista).ToList();
+
 //DistinctBy (avançado): Encontre valores únicos com base em uma propriedade de objeto.
+
+
+
 //LINQ Union (avançado): Combine duas listas de forma que os elementos não se repitam.
 //LINQ Intersect (avançado): Encontre elementos comuns entre duas listas.
 //LINQ Except (avançado): Encontre os elementos de uma lista que não estão presentes em outra.
