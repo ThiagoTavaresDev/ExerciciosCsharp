@@ -2,6 +2,9 @@
 
 
 // 1 - Substring (fácil): Extraia a palavra "mundo" de "Olá, mundo".
+
+using CsharpExercises;
+
 string ola = "Olá, mundo";
 Console.WriteLine("1- " + ola.Substring(5));
 
@@ -372,24 +375,75 @@ listaDeListas.SelectMany(lista => lista).ToList();
 
 //DistinctBy (avançado): Encontre valores únicos com base em uma propriedade de objeto.
 
+var pessoasTeste = new List<pessoas>
+{
+    new pessoas { Nome = "João", Idade = 25 },
+    new pessoas { Nome = "Ana", Idade = 30 },
+    new pessoas { Nome = "João", Idade = 40 },
+    new pessoas { Nome = "Pedro", Idade = 22 }
+};
 
+var nomesUnicos = pessoasTeste.DistinctBy<pessoas, string>(p => p.Nome).ToList();
+
+// Exibindo os resultados
+foreach (var pessoa in nomesUnicos)
+{
+    Console.WriteLine($"Nome: {pessoa.Nome}, Idade: {pessoa.Idade}");
+}
 
 //LINQ Union (avançado): Combine duas listas de forma que os elementos não se repitam.
+
+List<string> valoresString1 = new List<string>()
+{
+    "Valor1",
+    "Valor2",
+    "Valor3",
+    "Valor4",
+    "Valor5"
+};
+
+List<string> valoresString2 = new List<string>()
+{
+    "Valor8",
+    "Valor9",
+    "Valor1",
+    "Valor2",
+    "Valor10"
+};
+
+var resultadoUnion = valoresString1.Union(valoresString2);
+
 //LINQ Intersect (avançado): Encontre elementos comuns entre duas listas.
+
+var resultadoIntersect = valoresString1.Intersect(valoresString2);
+
 //LINQ Except (avançado): Encontre os elementos de uma lista que não estão presentes em outra.
+
+var resultadoExcept = valoresString1.Except(valoresString2);
+
 //Zip (avançado): Combine duas listas em uma única lista de tuplas.
+
+List<string> names = new List<string> { "João", "Ana", "Pedro" };
+List<int> idades = new List<int> { 25, 30, 22 };
+
+var combinacao = names.Zip(idades, (nome, idade) => (Nome: nome, Idade: idade)).ToList();
+
 //Reverse com LINQ (avançado): Inverta a ordem de uma lista com LINQ.
+
+List<int> numerosReversed = new List<int>{ 1, 2, 3, 4, 5 };
+numerosReversed.Reverse();
+
 //AsParallel (avançado): Execute uma operação paralela em uma lista.
-//PLINQ (avançado): Implemente uma consulta paralela para melhorar a performance.
-//Task.Run (avançado): Execute uma operação de forma assíncrona com Task.
-//async/await (avançado): Faça uma chamada de API simulada usando async/await.
-//CancellationToken (avançado): Cancele uma tarefa assíncrona em execução.
-//Thread.Sleep (intermediário): Faça um delay na execução de 5 segundos.
-//Semaphore (avançado): Controle o acesso concorrente a um recurso.
-//Parallel.ForEach (avançado): Implemente um loop paralelo para melhorar a performance.
-//MemoryCache (avançado): Implemente cache de dados em memória.
-//Lazy<T> (avançado): Use inicialização tardia para otimizar a criação de objetos.
-//Dictionary<TKey, TValue> (intermediário): Mapeie nomes de alunos para suas notas.
+
+names.AsParallel().ForAll(name =>
+{
+    Console.WriteLine(name.ToUpper());
+});
+
+// Espera o usuário pressionar uma tecla antes de fechar
+Console.ReadKey();
+
+
 
 
 
